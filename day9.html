@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>head1</h1>
+    <h1 class="king">head 2</h1>
+    <h1 id='demo'>head 3</h1>
+    <script>
+        /*1) Select an element by ID: Write a script that selects an element
+        with a specific id and changes its background color.*/
+
+        //var a=document.getElementsByClassName("king")
+        //a[0].style.color="red"
+        var a=document.getElementById('demo')
+        a.style.color='red'
+
+        /*2) Select elements by class name: Use getElementsByClassName()
+        to select all elements with a class and log them to the console.*/
+
+        var b=document.getElementsByClassName("king")
+        console.log(b[0])
+
+        /*3) Change text content: Select an element and change its 
+        text content using textContent or innerHTML.*/
+        var c=document.getElementsByClassName("king")
+        c[0].innerHTML='hi hello'
+    </script>
+</body>
+</html>
