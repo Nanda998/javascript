@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        .cbskjs{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+        }
+        #task-title{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+        .king{
+            border: 2px solid gold;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            max-width: 400px;
+        }
+        .king img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        input{
+            padding: 8px;
+            width: 300px;
+        }
+        button{
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .delete-btn{
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cbskjs">
+        <h1>DOM Practice</h1>
+        <input type="text" id="input-img" placeholder="Enter image URL"/>
+        <input type="text" id="input-title" placeholder="Enter the title"/>
+        <input type="text" id="input-text" placeholder="Enter the description"/>
+        <button id="button">Add Task</button>
+    </div>
+
+    <h2 style="text-align: center;">Tasks</h2>
+    <div id="task-title"></div>
+
+    <script>
+        const taskImgInput = document.getElementById("input-img");
+        const taskTitleInput = document.getElementById("input-title");
+        const taskTextInput = document.getElementById("input-text");
+        const taskButton = document.getElementById("button");
+        const taskContainer = document.getElementById("task-title");
+
+        taskButton.addEventListener('click', () => {
+            const imgUrl = taskImgInput.value.trim();
+            const titleText = taskTitleInput.value.trim();
+            const descText = taskTextInput.value.trim();
+
+            if(titleText === '' || descText === ''){
+                alert('Please enter a title and description');
+                return;
+            }
+
+            const listItem = document.createElement("div");
+            listItem.setAttribute("class", "king");
+
+            // Create and add image if URL is provided
+            if(imgUrl !== ''){
+                const img = document.createElement('img');
+                img.setAttribute('src', imgUrl);
+                img.setAttribute('alt', titleText);
+                listItem.appendChild(img);
+            }
+
+            const title = document.createElement('h3');
+            title.textContent = titleText;
+
+
+            const description = document.createElement('p');
+            description.textContent = descText;
+
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete-btn';
+
+            deleteButton.addEventListener('click', () => {
+                taskContainer.removeChild(listItem);
+            });
+
+
+            listItem.append(title, description, deleteButton);
+
+    
+            taskContainer.appendChild(listItem);
+
+
+            taskImgInput.value = '';
+            taskTitleInput.value = '';
+            taskTextInput.value = '';
+        });
+    </script>
+</body>
+</html>
