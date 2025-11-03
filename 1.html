@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cbskjs{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #task-title{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .king{
+            border: 2px solid gold;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cbskjs">
+    <h1>DOM practice</h1>
+    <input type="text" id="input-img" placeholder="enter img address"/>
+    <input type="text " id="input-title" placeholder="enter the tile"/>
+    <input type="text " id="input-text" placeholder="enter the Description"/>
+    <button id="button">Add task</button>
+    </div>
+
+    <h2>Tasks</h2>
+    <div id="task-title">
+
+    </div>
+    <script>
+        const taskimg =document.getElementById("input-img")
+        const tasktitle =document.getElementById("input-title")
+        const taskinput =document.getElementById("input-text")
+        const taskbutton = document.getElementById("button")
+        const titletask=document.getElementById("task-title")
+
+        taskbutton.addEventListener('click',()=>{
+            const tasktext1=tasktitle.value.trim();
+            const tasktext=taskinput.value.trim();
+
+            if(tasktext === '' || tasktext1 ===''){
+                alert('please enter a task');
+                return;
+            }
+            const  deletebutton = document.createElement('button');
+            deletebutton.textContent='delete';
+            deletebutton.style.color='red';
+
+            deletebutton.addEventListener('click',()=>{
+                titletask.removeChild(listitem);
+                titletask1.removeChild(listitem);
+            })
+
+            taskimg.setAttribute('src',taskimg.value)
+
+            const listitem =document.createElement("div");
+            listitem.setAttribute("class","king")
+
+            const taskspan = document.createElement('p');
+            taskspan.textContent=tasktext;
+
+            const taskspan1 = document.createElement('h1');
+            taskspan1.textContent=tasktext1;
+
+            listitem.append(taskimg,taskspan1,taskspan);
+            listitem.appendChild(deletebutton);
+
+            titletask.appendChild(listitem);
+
+            taskinput.value='';
+            tasktitle.value='';
+
+        })
+    </script>
+</body>
+</html>
