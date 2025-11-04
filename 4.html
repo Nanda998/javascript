@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .con1{
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid gold;
+            padding: 20px;
+            gap: 20px;
+            margin-top: 50px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="con1">
+        <input type="text" placeholder="enter the url" id="hi">
+    <input type="text" placeholder="enter the title" id="hello">
+    <input type="text" placeholder="enter description" id="okk">
+    <button onclick="fun()">click me</button>
+    </div>
+    
+    <div class="con"> 
+    </div>
+   
+    <script>
+        function fun(){
+            var con = document.getElementsByClassName('con')[0]
+            var card= document.createElement('div')
+
+            var listpic=document.getElementById('hi')
+            var listh=document.getElementById('hello')
+            var listp=document.getElementById('okk')
+
+            if(listh.value==='' || listp.value===''){
+                alert('enter the value in missing field');
+                return;
+            }
+
+            var h1=document.createElement('h1')
+            h1.textContent=listh.value
+            var p=document.createElement('p')
+            p.textContent=listp.value
+
+
+            if(listpic.value !== ''){
+                const img = document.createElement('img');
+                img.setAttribute('src', listpic.value);
+                card.appendChild(img);
+            }
+            // var img = document.createElement('img')
+            // img.setAttribute('src','listpic.value')
+
+            card.append(h1,p)
+            con.appendChild(card)
+
+            listh.value=''
+            listp.value=''
+            listpic.value=''
+        }
+    </script>
+</body>
+</html>
